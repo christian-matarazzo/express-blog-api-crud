@@ -9,7 +9,7 @@ function index (req,res) {
     }
     res.json(filteredPost) /* sending a json response of posts */
 
-    /* example on postman: http://localhost:3000/posts/?tags=programmazione */
+    /* example on postman: http://localhost:3000/posts/?tags=programmazione or http://localhost:3000/posts/ without filter */
 }
 
 
@@ -25,9 +25,29 @@ if(!post) {
     })
 }
 res.json(post)
+/* example on postman: http://localhost:3000/posts/2 or http://localhost:3000/posts/8 to test 404 */
+}
+
+/* destroy */
+    function destroy(req, res) {
+    const id = parseInt(req.params.id)
+    const post = posts.find((post, index) => index === id)
+    if (!post) {
+        res.status(404)
+        return res.json({
+            error: "Post non presente",
+            message: "Post non trovato, riprova"
+        })
+    }
+    posts.splice(posts.indexOf(post), 1)
+
+    console.log(posts, "Elemento eliminato");
+    
+
+    res.sendStatus(204)
+
+    /* to test on postman http://localhost:3000/posts/0 and rerun GET index without key to filter */
 }
 
 
-
-
-module.exports = {index, show}
+module.exports = {index, show, destroy}

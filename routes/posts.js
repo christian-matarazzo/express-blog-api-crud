@@ -9,7 +9,7 @@ router.get('/', postController.index)
 
 /* show */
 
-router.get('/:id', postController.show )
+router.get('/:id', postController.show)
 
 /* store */
 
@@ -19,14 +19,14 @@ router.post('/', (req, res) => {
 
 /* update */
 
-router.put('/:id', (req,res) => {
-    res.send('Aggiornamento del post con id: ' +req.params.id) /* response of post update */
+router.put('/:id', (req, res) => {
+    res.send('Aggiornamento del post con id: ' + req.params.id) /* response of post update */
 })
 
 /* destroy */
 
-router.delete('/:id', (req,res) => {
-    res.send('Cancellazione del post con id: ' + req.params.id) /* response of post deletion */
-})
+router.delete('/:id', postController.destroy) 
+
+
 
 module.exports = router

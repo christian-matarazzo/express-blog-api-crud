@@ -32,14 +32,3 @@ const posts = [  /* our array of blog */
 ];
 
 module.exports = posts
-
-
-/* index */ 
-
-/* show */
-
-/* store */
-
-/* update */
-
-/* delete */
