@@ -9,15 +9,7 @@ router.get('/', postController.index)
 
 /* show */
 
-router.get('/:id', (req, res) => {
-const id = parseInt(req.params.id)
-const post = posts.find((post,index) => index === id)
-if (post) {
-    res.json(post)
-} else {
-    res.status(404).json({ error: 'Post non trovato' }) /* response if the post is not found */
-}
-})
+router.get('/:id', postController.show )
 
 /* store */
 

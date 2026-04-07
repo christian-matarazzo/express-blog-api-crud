@@ -1,5 +1,7 @@
 const posts = require('../data/posts')
 
+
+/* index */
 function index (req,res) {
     let filteredPost = posts
     if (req.query.tags) {
@@ -11,4 +13,21 @@ function index (req,res) {
 }
 
 
-module.exports = {index}
+/* show */
+function show (req,res) {
+const id = parseInt(req.params.id)
+const post = posts.find((post,index) => index === id)
+if(!post) {
+    res.status(404)
+    return res.json({
+        error: "Post non presente",
+        message:"Post non trovato, riprova"
+    })
+}
+res.json(post)
+}
+
+
+
+
+module.exports = {index, show}
