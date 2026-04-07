@@ -2,7 +2,7 @@ const posts = require('../data/posts')
 
 
 /* index */
-function index (req,res) {
+function index(req, res) {
     let filteredPost = posts
     if (req.query.tags) {
         filteredPost = posts.filter(pizza => pizza.tags.includes(req.query.tags))
@@ -14,22 +14,22 @@ function index (req,res) {
 
 
 /* show */
-function show (req,res) {
-const id = parseInt(req.params.id)
-const post = posts.find((post,index) => index === id)
-if(!post) {
-    res.status(404)
-    return res.json({
-        error: "Post non presente",
-        message:"Post non trovato, riprova"
-    })
-}
-res.json(post)
-/* example on postman: http://localhost:3000/posts/2 or http://localhost:3000/posts/8 to test 404 */
+function show(req, res) {
+    const id = parseInt(req.params.id)
+    const post = posts.find((post, index) => index === id)
+    if (!post) {
+        res.status(404)
+        return res.json({
+            error: "Post non presente",
+            message: "Post non trovato, riprova"
+        })
+    }
+    res.json(post)
+    /* example on postman: http://localhost:3000/posts/2 or http://localhost:3000/posts/8 to test 404 */
 }
 
 /* destroy */
-    function destroy(req, res) {
+function destroy(req, res) {
     const id = parseInt(req.params.id)
     const post = posts.find((post, index) => index === id)
     if (!post) {
@@ -42,7 +42,7 @@ res.json(post)
     posts.splice(posts.indexOf(post), 1)
 
     console.log(posts, "Elemento eliminato");
-    
+
 
     res.sendStatus(204)
 
@@ -50,4 +50,4 @@ res.json(post)
 }
 
 
-module.exports = {index, show, destroy}
+module.exports = { index, show, destroy }

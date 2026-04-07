@@ -25,7 +25,7 @@ router.put('/:id', (req, res) => {
 
 /* destroy */
 
-router.delete('/:id', postController.destroy) 
+router.delete('/:id', postController.destroy)
 
 
 
