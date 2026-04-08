@@ -11,9 +11,11 @@ router.get('/', postController.index)
 
 router.get('/:id', postController.show)
 
-/* store */
+/* store, create */
 
-router.post('/', (req, res) => {
+router.post('/', function (req, res) {
+    console.log("Dati in ingresso", req.body);
+    
     res.send('Creazione di un nuovo post ') /* response of a post creation */
 })
 

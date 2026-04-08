@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
 const port = 3000
+app.use(express.json()) /* body parser */
 const postsRouter = require('./routes/posts') /* importing routing */
-
 
 app.use('static', express.static('public'))
 app.get('/', (req, res) => {
