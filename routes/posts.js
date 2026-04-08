@@ -17,9 +17,7 @@ router.post('/', postController.create)
 
 /* update */
 
-router.put('/:id', (req, res) => {
-    res.send('Aggiornamento del post con id: ' + req.params.id) /* response of post update */
-})
+router.put('/:title', postController.update)
 
 /* destroy */
 

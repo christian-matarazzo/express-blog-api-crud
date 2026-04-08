@@ -47,6 +47,34 @@ function create(req, res) {
     res.json(newPost)
 }
 
+/* update, the update work with title slug, so in postman you need to call the title like an url es: "alla-scoperta-di-react" to modify */
+
+function update(req, res) {
+    const title = req.params.title.trim();
+    console.log("Richiesta ricevuta per ID:", title)
+    const post = posts.find(thisPost => thisPost.titolo.toLowerCase().trim().replaceAll(" ", "-") === title);
+    console.log(post);
+
+
+    if (!post) {
+        return res.status(404).json({
+            error: "Not Found",
+            message: "Post non trovato"
+        });
+    }
+
+    post.titolo = req.body.titolo.trim();
+    post.immagine = req.body.immagine;
+    post.contenuto = req.body.contenuto;
+
+    console.log(posts);
+
+    res.json(post);
+}
+
+
+
+
 
 /* destroy */
 function destroy(req, res) {
@@ -70,4 +98,4 @@ function destroy(req, res) {
 }
 
 
-module.exports = { index, show, destroy, create }
+module.exports = { index, show, destroy, create, update }
