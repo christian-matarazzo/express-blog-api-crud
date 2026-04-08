@@ -13,11 +13,7 @@ router.get('/:id', postController.show)
 
 /* store, create */
 
-router.post('/', function (req, res) {
-    console.log("Dati in ingresso", req.body);
-    
-    res.send('Creazione di un nuovo post ') /* response of a post creation */
-})
+router.post('/', postController.create)
 
 /* update */
 

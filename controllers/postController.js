@@ -28,6 +28,26 @@ function show(req, res) {
     /* example on postman: http://localhost:3000/posts/2 or http://localhost:3000/posts/8 to test 404 */
 }
 
+/* create,store */
+
+function create(req, res) {
+    console.log("Dati in ingresso", req.body);
+    const { titolo, contenuto, immagine, tags } = req.body
+
+    const newPost = {
+        id: Date.now(),
+        titolo,
+        contenuto,
+        immagine,
+        tags
+    }
+
+    posts.push(newPost)
+    res.status(201)
+    res.json(newPost)
+}
+
+
 /* destroy */
 function destroy(req, res) {
     const id = parseInt(req.params.id)
@@ -50,4 +70,4 @@ function destroy(req, res) {
 }
 
 
-module.exports = { index, show, destroy }
+module.exports = { index, show, destroy, create }
